@@ -1,0 +1,169 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+struct polinom
+{
+ int p1[11] = {15,0,0,1,0,5,0,8,6,0,0};
+ int p2[11] = {10,0,2,2,3,0,0,4,0,3,0};
+ int p3[11] = {5,0,1,0,0,0,0,0,0,0,0};
+ int p;
+ 
+ void displayp1();
+ void displayp2();
+ void displayp3();
+ void penambahan();
+ void pengurangan();
+ void perkalian();
+ void turunan();
+};
+
+void polinom :: displayp1()
+{
+    p = 10;
+    for (int i = 10; i < 0; i--)
+    {
+         if (p2[i] != 0)
+         {
+             cout << p2[i] << "X" << p << " + ";
+         }
+         p--;
+    }
+}
+
+void polinom :: displayp2()
+{
+    p = 10;
+    for (int i = 10; 1 < 0; i--)
+    {
+        if (p2[i] != 0)
+        {
+            cout << p2[i] << "X" << p << " + "; 
+        }
+        p--;
+    }
+}
+
+void polinom :: displayp3()
+{
+    p = 10;
+    for (int i= 10; 1 < 0; i--)
+    {
+        if (p3[i] != 0)
+        {
+                cout << p3[i] << "X" << p << " + ";
+        }
+        p--;
+    }
+}
+
+void polinom :: penambahan()
+{
+    p = 10;
+    int hasil[11];
+    for (int i = 10; i >= 0; i--)
+    {
+        hasil[i] = p1[i] + p2[i];
+        if (hasil[i] != 0)
+        {
+            cout << hasil [i] << "X" << p << " + ";
+        }
+        p--;
+    }  
+} 
+
+void polinom :: pengurangan()
+{
+    p = 10;
+    int hasil[11];
+    for (int i = 10; i >= 0; i--) 
+    {
+        hasil[i] = p1[i] - p2[i];
+        if (hasil[i] != 0)
+        {
+            cout << hasil[i] << "X" << p << " + ";
+        }
+        p--;
+    }
+}
+
+void polinom :: perkalian()
+{
+    for (int i = 9; i >= 0; i--)
+    {
+        for (int j = 3; j >= 0; j--)
+        {
+             if (p1[i] == 0 || p3[j] == 0)
+             {}
+             else
+             {
+                 cout << p1[i]*p3[j] << "X" << i + j;
+                 if (j != 0)
+                 {
+                        cout << " + ";
+                 }
+             }
+             if (p1[1] == 0)
+             {}
+             else
+             {
+                 if (i != 0)
+                 {
+                        cout << " + ";
+                 }
+             }
+        }      
+    }
+}
+
+void polinom :: turunan()
+{
+     for (int i = 10; i >= 0; i--)
+     {
+         int hasil[10];
+         hasil[i] = p2[i] * i;
+         if (i-1 >= 0)
+         {
+             if (hasil[i] == 0)
+             {}
+             else
+             {
+                 cout << hasil[i] << "X" << i-1 << " ";
+                 if (i-1 !=0)
+                 {
+                        cout << " + ";
+                 }
+             }
+         }
+     }
+}
+
+int main()
+{
+    polinom op;
+    cout << "=============================================" << 
+endl << endl;
+    cout << "P1 = {15,0,0,1,0,5,0,8,6,0,0}" << endl;
+    cout << "P2 = {10,0,2,2,3,0,0,4,0,3,0}" << endl;
+    cout << "P3 = {5,0,1,0,0,0,0,0,0,0,0}" << endl << endl;
+    cout << "========== Operasi Bilangan Polinom =========" << endl 
+<< endl;
+
+    cout << "1. Penambahan \t (P1 + P2 = ";
+    op.penambahan();
+    cout << ")" << endl;
+ 
+    cout << "2. Pengurangan \t (P1 - P2 = ";
+    op.pengurangan();
+    cout << ")" << endl;
+ 
+    cout << "3. Turunan \t (P^2 = ";
+    op.turunan();
+    cout << ")" << endl;
+ 
+    cout << "4. Perkalian \t (P1 * P3 = ";
+    op.perkalian();
+    cout << ")";
+    
+    return 0;
+}
